@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerItem">
+        <item>유사도순</item>
+        <item>날짜순</item>
+        <item>가격낮은순</item>
+        <item>가격높은순</item>
+    </string-array>
+</resources>
