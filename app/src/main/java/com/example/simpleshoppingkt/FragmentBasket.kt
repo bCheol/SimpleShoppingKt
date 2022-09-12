@@ -15,13 +15,10 @@ import androidx.recyclerview.widget.RecyclerView
 class FragmentBasket : Fragment() {
 
     lateinit var sqLiteDatabase: SQLiteDatabase
-    lateinit var toast: Toast
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) : View? {
 
         val root = inflater.inflate(R.layout.fragment_basket, container, false)
-
-        toast = Toast.makeText(requireActivity(), "삭제됐습니다.", Toast.LENGTH_SHORT)
 
         //리사이클러뷰 생성
         val recyclerView : RecyclerView = root.findViewById(R.id.recyclerView)
@@ -44,18 +41,36 @@ class FragmentBasket : Fragment() {
         cursor.close()
         recyclerView.adapter = adapterBasket
 
+        //토스트 설정
+        val toast = Toast.makeText(requireActivity(), "삭제됐습니다.", Toast.LENGTH_SHORT)
+        val toast2 = Toast.makeText(requireActivity(), "다시 클릭 해주세요.", Toast.LENGTH_SHORT)
+
+        var positionB = 0
+
         //장바구니 삭제
         adapterBasket.setOnDeleteClick(object : BasketDeleteClickListener{
             override fun onDeleteClick(holder: AdapterBasket.ViewHolder, view: View, position: Int) {
-                sqLiteDatabase = MainActivity.myDBHelper.writableDatabase
-                val sql = "delete from basketList where id = " + adapterBasket.basketItem[position].id
-                sqLiteDatabase.execSQL(sql)
-                adapterBasket.basketItem.removeAt(position)
-                adapterBasket.notifyItemRemoved(position)
-                toast.show()
-                Handler(Looper.getMainLooper()).postDelayed({
-                    toast.cancel()
-                },500)
+                if(position != RecyclerView.NO_POSITION) {
+                    positionB = position
+                    sqLiteDatabase = MainActivity.myDBHelper.writableDatabase
+                    val sql =
+                        "delete from basketList where id = " + adapterBasket.basketItem[position].id
+                    sqLiteDatabase.execSQL(sql)
+                    adapterBasket.basketItem.removeAt(position)
+                    adapterBasket.notifyItemRemoved(position)
+                    toast.show()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        toast.cancel()
+                    }, 500)
+                }else{
+                    recyclerView.removeAllViews()
+                    recyclerView.adapter=adapterBasket
+                    recyclerView.scrollToPosition(positionB-1)
+                    toast2.show()
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        toast2.cancel()
+                    }, 800)
+                }
             }
         })
         return root

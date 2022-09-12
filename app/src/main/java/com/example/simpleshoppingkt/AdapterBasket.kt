@@ -33,7 +33,6 @@ class AdapterBasket : RecyclerView.Adapter<AdapterBasket.ViewHolder>(), BasketDe
             basketDeleteBtn.setOnClickListener {
                 val position = adapterPosition
                 listener.onDeleteClick(ViewHolder(itemView, listener), it, position)
-
             }
         }
 
