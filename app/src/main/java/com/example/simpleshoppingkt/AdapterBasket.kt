@@ -5,6 +5,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,8 +21,8 @@ class AdapterBasket : RecyclerView.Adapter<AdapterBasket.ViewHolder>(), BasketDe
         val title: TextView
         val imageView: ImageView
         val lprice: TextView
-        val shopBtn: TextView
-        val basketDeleteBtn: TextView
+        val shopBtn: Button
+        val basketDeleteBtn: Button
 
         init {
             title = itemView.findViewById(R.id.title)

@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -21,8 +22,8 @@ class AdapterSearch : RecyclerView.Adapter<AdapterSearch.ViewHolder>(){
         val title: TextView
         val imageView: ImageView
         val lprice: TextView
-        val shopBtn: TextView
-        val basketAddBtn: TextView
+        val shopBtn: Button
+        val basketAddBtn: Button
         var toast: Toast
         init {
              title = itemView.findViewById(R.id.title)

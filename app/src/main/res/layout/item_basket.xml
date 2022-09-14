@@ -67,28 +67,27 @@
             android:layout_marginBottom="7dp"
             android:orientation="horizontal">
             <!-- 자세히 -->
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/shopBtn"
                 android:layout_marginEnd="1.5dp"
-                android:background="@drawable/edge"
                 android:text="자세히"
-                android:textSize="18sp"/>
+                android:textSize="15sp"
+                />
             <!-- 삭제 -->
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/basketDeleteBtn"
                 android:layout_marginStart="1.5dp"
                 android:layout_marginEnd="3dp"
-                android:background="@drawable/edge"
                 android:text="삭제"
-                android:textSize="18sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
