@@ -41,6 +41,12 @@ class FragmentBasket : Fragment() {
         cursor.close()
         recyclerView.adapter = adapterBasket
 
+        //플로팅 버튼 클릭
+        val fab: View = root.findViewById(R.id.floatingButton)
+        fab.setOnClickListener { view ->
+            recyclerView.scrollToPosition(0)
+        }
+
         //토스트 설정
         val toast = Toast.makeText(requireActivity(), "삭제됐습니다.", Toast.LENGTH_SHORT)
         val toast2 = Toast.makeText(requireActivity(), "다시 클릭 해주세요.", Toast.LENGTH_SHORT)
