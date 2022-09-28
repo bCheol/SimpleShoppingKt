@@ -155,17 +155,11 @@ class FragmentSearch : Fragment() {
                                 adapterSearch.addItem(RecyclerItemSearch(title, link, image, lprice))
                             }
                             recyclerView.adapter = adapterSearch
-                            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-                                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                                    super.onScrolled(recyclerView, dx, dy)
-                                    val manager = recyclerView.layoutManager as LinearLayoutManager
-                                    val lastPosition = manager.findLastCompletelyVisibleItemPosition()
-                                    val itemTotalCount = adapterSearch.itemCount - 1
-                                    if(lastPosition == itemTotalCount){
-                                        Toast.makeText(requireActivity(),"마지막 입니다.", Toast.LENGTH_SHORT).show()
-                                    }
+                            recyclerView.setOnScrollChangeListener { view, i, i2, i3, i4 ->
+                                if(!view.canScrollVertically(1)){
+                                    Toast.makeText(requireActivity(), "마지막입니다.", Toast.LENGTH_SHORT).show()
                                 }
-                            })
+                            }
                         } else{
                             runToast(toast2)
                         }
