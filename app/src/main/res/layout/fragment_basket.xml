@@ -40,7 +40,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:src="@drawable/icon_up"
-            android:layout_margin="16dp"
-            app:backgroundTint="@color/purple_200" />
+            android:layout_margin="10dp"
+            app:backgroundTint="@color/purple_200"
+            app:fabSize="mini"
+            app:tint="@null"/>
     </FrameLayout>
 </LinearLayout>
